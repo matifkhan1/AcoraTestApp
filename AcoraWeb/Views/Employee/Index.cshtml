@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Employee List</h1>
+            <br />
+        </div>
+
+        <div class="col-6 text-end">
+            <a asp-controller="Employee" asp-action="Create">Create New Employee</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+<table class="table table-bordered table-stripped" style="width:100%;">
+    <thead>
+        <tr>
+            <th>EmployeeNumber</th>
+            <th>Date of Birth</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Department</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="10%">@obj.Id</td>
+
+                <td width="10%">@obj.DateOfBirth</td>
+
+                <td width="10%">@obj.FirstName</td>
+
+                <td width="10%">@obj.LastName</td>
+
+                <td width="10%">@obj.Address</td>
+
+                <td width="10%">@obj.City</td>
+
+                <td width="10%">@obj.Department.Name</td>
+                <td>
+                    <div>
+                        <a asp-controller="Employee" asp-action="Edit" asp-route-id="@obj.Id"> Edit</a>
+                    </div>
+                    <div>
+                        <a asp-controller="Employee" asp-action="Delete" asp-route-id="@obj.Id"> Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
